@@ -1,5 +1,6 @@
 WtMenu =  {
   dropdown: [],
+  primary: [],
   addDropdown: function(name, icon, displayOrder) {
 
     var i = this.indexFor(name);
@@ -39,6 +40,13 @@ WtMenu =  {
     this.dropdown[i].items[n].itemRoute = route;
     this.dropdown[i].items[n].itemIcon = icon;
     this.dropdown[i].items[n].displayOrder = displayOrder;
+  },
+  addPrimary: function(name, route, icon, displayOrder) {
+    var p = {};
+    p.name = name;
+    p.route = route;
+    p.icon = icon;
+    this.primary.push(p);
   }
 };
 

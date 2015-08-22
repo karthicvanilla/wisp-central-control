@@ -1,0 +1,1 @@
+MdArchive = WtCollection('md_archive');

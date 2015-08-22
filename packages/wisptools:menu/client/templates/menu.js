@@ -1,3 +1,4 @@
 Template.wtMenu.helpers({
-  dropdown: WtMenu.dropdown
+  dropdown: WtMenu.dropdown,
+  primary: WtMenu.primary
 });

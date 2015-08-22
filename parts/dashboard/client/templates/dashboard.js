@@ -1,17 +1,17 @@
 Template.dashboard.helpers({
-  salesInteractions: function () {
-    return WtInteraction.find({type: "sales"}).count();
+  jobOpen: function () {
+    return MdArchive.find({status: "open"}).count();
   },
-  supportInteractions: function () {
-    return WtInteraction.find({type: "support"}).count();
+  jobDownloading: function () {
+    return MdArchive.find({status: "download"}).count();
   },
-  serviceInteractions: function () {
-    return WtInteraction.find({type: "service"}).count();
+  jobReady: function () {
+    return MdArchive.find({status: "duplicate"}).count();
   },
-  totalInteractions: function () {
-    return WtInteraction.find().count();
+  jobComplete: function () {
+    return MdArchive.find({status: "shipped"}).count();
   },
-  towers: function () {
-    return WtTower.find().count();
+  jobTotal: function () {
+    return MdArchive.find().count();
   }
 });
