@@ -16,9 +16,9 @@
       <label class="col-sm-2 control-label">Disk Compatibility</label>
       <div class="col-sm-10">
         <select class="form-control" name="compatibility">
-          <option>DVD 2.4GB</option>
-          <option>Blu-ray 25GB</option>
-          <option>DVD 2.4GB and Blu-ray 25GB</option>
+          <option>DVD (2.4GB)</option>
+          <option>Blu-ray (25GB)</option>
+          <option>DVD (2.4GB) and Blu-ray (25GB)</option>
         </select>
       </div>
     </div>
@@ -51,6 +51,8 @@
 
 <template name="mdDuplicatorsEdit">
 <div class="jumbotron">
+  <h2>{{name}}</h2>
+  <hr/>
   <form class="form-horizontal duplicator-save">
     <div class="form-group">
       <label class="col-sm-2 control-label">Name</label>
@@ -62,9 +64,9 @@
       <label class="col-sm-2 control-label">Disk Compatibility</label>
       <div class="col-sm-10">
         <select class="form-control" name="compatibility">
-          <option {{selected compatibility "Payment Received"}}>DVD 2.4GB</option>
-          <option>Blu-ray 25GB</option>
-          <option>DVD 2.4GB and Blu-ray 25GB</option>
+          <option {{selected compatibility "DVD (2.4GB)"}}>DVD (2.4GB)</option>
+          <option {{selected compatibility "Blu-ray (25GB)"}}>Blu-ray (25GB)</option>
+          <option {{selected compatibility "DVD (2.4GB) and Blu-ray (25GB)"}}>DVD (2.4GB) and Blu-ray (25GB)</option>
         </select>
       </div>
     </div>

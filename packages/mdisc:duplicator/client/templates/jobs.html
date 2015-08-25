@@ -1,0 +1,108 @@
+<template name="mdJobs">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="row">
+        <div class="col-xs-2">
+          <h4>Jobs</h4>
+        </div>
+        <div class="col-xs-4">
+          <select class="form-control" name="job-filter" id="job-filter" {{typeDisable}}>
+            <option  {{selectedType "DVD (2.4GB)"}}>DVD (2.4GB)</option>
+            <option {{selectedType "Blu-ray (25GB)"}}>Blu-ray (25GB)</option>
+            <option {{selectedType "DVD (2.4GB) and Blu-ray (25GB)"}}>All</option>
+          </select>
+        </div>
+        <div class="col-xs-3">
+          <button class="btn btn-primary btn-block">Send Top 50</button>
+        </div>
+        <div class="col-xs-3">
+          <button class="btn btn-primary btn-block">Send All</button>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-xs-12">
+          {{> mdJobsToDo}}
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="row">
+        <div class="col-xs-3">
+          <h4>Duplicator</h4>
+        </div>
+        <div class="col-xs-7">
+          <select class="form-control" name="dup-filter" id="dup-filter">
+            {{#each duplicatorList}}
+              <option value="{{_id}}" {{selectedDup _id}}>{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="col-xs-2">
+          <button class="btn btn-success btn-block">Start</button>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-xs-12">
+          {{> mdJobsToStart}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="mdJobsToDo">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Size</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each jobToDoList}}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{diskType}}</td>
+          <td>{{size}}</td>
+          <td>{{> mdSendJob id=_id}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="mdJobsToStart">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Size</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each jobToDoList}}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{diskType}}</td>
+          <td>{{size}}</td>
+          <td>{{> mdRemoveJob id=_id}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</template>
+
+<template name="mdSendJob">
+  <button class="btn btn-primary btn-block md-send">Send</button>
+</template>
+
+<template name="mdRemoveJob">
+  <button class="btn btn-danger btn-block md-remove">Remove</button>
+</template>

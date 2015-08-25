@@ -1,15 +1,15 @@
 Template.dashboard.helpers({
   jobOpen: function () {
-    return MdArchive.find({status: "open"}).count();
+    return MdArchive.find({status: "Open"}).count();
   },
   jobDownloading: function () {
-    return MdArchive.find({status: "download"}).count();
+    return MdArchive.find({status: "Downloading"}).count();
   },
   jobReady: function () {
-    return MdArchive.find({status: "duplicate"}).count();
+    return MdArchive.find({status: "Ready to Duplicate"}).count();
   },
   jobComplete: function () {
-    return MdArchive.find({status: "shipped"}).count();
+    return MdArchive.find({status: "Shipped"}).count();
   },
   jobTotal: function () {
     return MdArchive.find().count();

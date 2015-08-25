@@ -35,7 +35,9 @@ Package.onUse(function(api) {
   api.addFiles([
     'client/menu.js',
     'client/templates/duplicators.html',
-    'client/templates/duplicators.js'
+    'client/templates/duplicators.js',
+    'client/templates/jobs.html',
+    'client/templates/jobs.js'
     ], 'client');
 
   api.export('MdDuplicator');
