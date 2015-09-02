@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'mdisc:cloud-service-google-photo',
+  name: 'mdisc:accounts',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -14,22 +14,25 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
 
   api.use([
+    'meteor',
+    'mongo',
     'templating',
-    'oauth',
-    'google'
+    'accounts-base@1.2.0',
+    'accounts-password@1.1.1',
+    'useraccounts:iron-routing@1.12.3',
+    'softwarerero:accounts-t9n@1.1.4',
   ]);  
 
-  // Client only files
   api.addFiles([
-    'client/templates/login.html',
-    'client/templates/login.js',
-    'client/templates/show-few-photos.html',
-    'client/templates/show-few-photos.js'
-    ], 'client');
+    'lib/config/accounts_t9n.js',
+    'lib/config/at_config.js'
+    ], ['server','client']);
+
+  //api.export('Accounts');
 });
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('mdisc:cloud-service-google-photo');
-  api.addFiles('cloud-service-google-photo-tests.js');
+  api.use('mdisc:accounts');
+  api.addFiles('accounts-tests.js');
 });

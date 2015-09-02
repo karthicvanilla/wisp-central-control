@@ -12,7 +12,19 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.addFiles('cloud-services.js');
+
+  api.use([
+    'mdisc:cloud-service-google-photo',
+    'mdisc:cloud-service-dropbox',
+    'wisptools:collection'
+  ]);  
+
+  api.addFiles([
+    'lib/collections.js',
+    'lib/methods.js'
+    ], ['server','client']);
+
+  api.export('MdCloudServices');
 });
 
 Package.onTest(function(api) {

@@ -23,6 +23,8 @@ WtCollection = function(collectionName) {
 
     wtCollection.before.insert(function(userId, doc) {
       doc.createdAt = new Date();
+      doc.creator = userId;
+      doc.owner = userId;
     });
 
     wtCollection.before.update(function(userId, doc, fieldNames, modifier, options) {
