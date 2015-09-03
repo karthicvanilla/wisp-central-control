@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'mdisc:cloud-services',
+  name: 'mdisc:stripe',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -11,26 +11,12 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.2');
-
-  api.use([
-    'oauth',
-    'mdisc:cloud-service-google-photo',
-    'mdisc:cloud-service-dropbox',
-    'wisptools:collection'
-  ]);  
-
-  api.addFiles([
-    'lib/collections.js',
-    'lib/methods.js'
-    ], ['server','client']);
-
-  api.export('MdCloudServices');
-  api.export('OAuth');
+  api.versionsFrom('1.1.0.3');
+  api.addFiles('stripe.js');
 });
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('mdisc:cloud-services');
-  api.addFiles('cloud-services-tests.js');
+  api.use('mdisc:stripe');
+  api.addFiles('stripe-tests.js');
 });
