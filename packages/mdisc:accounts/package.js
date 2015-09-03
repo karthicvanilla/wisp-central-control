@@ -21,6 +21,8 @@ Package.onUse(function(api) {
     'accounts-password@1.1.1',
     'useraccounts:iron-routing@1.12.3',
     'softwarerero:accounts-t9n@1.1.4',
+    'useraccounts:bootstrap@1.12.3',
+    'accounts-google@1.0.4'
   ]);  
 
   api.addFiles([

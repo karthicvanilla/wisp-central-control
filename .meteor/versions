@@ -1,4 +1,6 @@
 accounts-base@1.2.0
+accounts-google@1.0.4
+accounts-oauth@1.1.5
 accounts-password@1.1.1
 aldeed:autoform@4.2.2
 aldeed:collection2@2.3.1
@@ -90,6 +92,7 @@ tracker@1.0.7
 ui@1.0.6
 underscore@1.0.3
 url@1.0.4
+useraccounts:bootstrap@1.12.3
 useraccounts:core@1.12.3
 useraccounts:iron-routing@1.12.3
 webapp@1.2.0
