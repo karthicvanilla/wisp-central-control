@@ -17,20 +17,36 @@ Package.onUse(function(api) {
     'meteor',
     'mongo',
     'templating',
+    'underscore',
     'accounts-base@1.2.0',
     'accounts-password@1.1.1',
+    'accounts-google@1.0.4',
+    'useraccounts:bootstrap@1.12.3',
     'useraccounts:iron-routing@1.12.3',
     'softwarerero:accounts-t9n@1.1.4',
-    'useraccounts:bootstrap@1.12.3',
-    'accounts-google@1.0.4'
-  ]);  
+    'service-configuration'
+    //,'splendido:accounts-meld@1.3.1'
+  ]);
 
   api.addFiles([
     'lib/config/accounts_t9n.js',
-    'lib/config/at_config.js'
+    'lib/config/at_config.js',
+    'lib/router.js' //important that this loads after at_config.js
     ], ['server','client']);
 
-  //api.export('Accounts');
+  //Server Only Files
+  api.addFiles([
+    'server/config/service_configuration.js'
+    //,'server/config/accounts_meld.js'
+    ], ['server']);
+
+  //Client Only Files
+  api.addFiles([
+    'client/templates/modal.html',
+    'client/templates/modal.js'
+    ], ['client']);
+
+  api.export('Accounts');
 });
 
 Package.onTest(function(api) {
