@@ -1,5 +1,5 @@
-Template.mdCloudGoogleloginButtonsBig.events({
-    'click a#loginGooglePhoto': function(e, t) {
+Template.mdCloudGoogleAuthorizeButtonsBig.events({
+    'click a#authorizeGooglePhoto': function(e, t) {
         e.preventDefault();
 
         Google.requestCredential({

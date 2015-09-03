@@ -21,8 +21,8 @@ Package.onUse(function(api) {
 
   // Client only files
   api.addFiles([
-    'client/templates/login.html',
-    'client/templates/login.js',
+    'client/templates/authorize.html',
+    'client/templates/authorize.js',
     'client/templates/show-few-photos.html',
     'client/templates/show-few-photos.js'
     ], 'client');
