@@ -1,0 +1,37 @@
+<template name="mdJobsWorking">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-2">
+          <h4>Download Jobs</h4>
+        </div>
+        <div class="col-xs-12">
+          {{> mdJobsWorkingAll}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="mdJobsWorkingAll">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Completed</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each jobs}}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{type}}</td>
+          <td>{{progress.percent}}%</td>
+          <td>{{status}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>

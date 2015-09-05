@@ -12,7 +12,29 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
-  api.addFiles('jobs.js');
+
+  api.use([
+    'templating',
+    'iron:router@1.0.7',
+    'wisptools:menu',
+    'vsivsi:job-collection@1.2.3'
+  ]);    
+
+  api.addFiles([
+    'client/templates/admin-view.html',
+    'client/templates/admin-view.js',
+    'client/menu.js',
+    ], ['client']);
+
+  api.addFiles([
+    'lib/jobs.js',
+    'lib/router.js'
+    ], ['server','client']);
+  
+  api.export('Jobs');
+  api.export('JobCollection');
+  api.export('MdJobs');
+
 });
 
 Package.onTest(function(api) {

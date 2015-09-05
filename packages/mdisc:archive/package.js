@@ -25,7 +25,14 @@ Package.onUse(function(api) {
   ]);
 
   api.addFiles([
-    'lib/collection.js'
+    'client/templates/admin-view.html',
+    'client/templates/admin-view.js',
+    'client/menu.js'
+    ], ['client']);
+
+  api.addFiles([
+    'lib/collection.js',
+    'lib/router.js'
     ], ['server','client']);
 
   api.export('MdArchive');
