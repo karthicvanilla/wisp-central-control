@@ -21,9 +21,12 @@ Package.onUse(function(api) {
   ]);  
 
   api.addFiles([
-    'lib/collections.js',
-    'lib/methods.js'
+    'lib/collections.js'
     ], ['server','client']);
+
+  api.addFiles([
+    'server/methods.js'
+    ], ['server']);
 
   api.export('MdCloudServices');
   api.export('OAuth');

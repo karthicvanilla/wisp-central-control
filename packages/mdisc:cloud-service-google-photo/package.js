@@ -14,10 +14,17 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
 
   api.use([
+    'meteor',
     'oauth',
     'templating',
-    'google'
+    'google',
+    'meteorhacks:async'
   ]);  
+
+  // Server only files
+  api.addFiles([
+    'server/g-photos.js'
+    ], 'server');
 
   // Client only files
   api.addFiles([
@@ -26,10 +33,17 @@ Package.onUse(function(api) {
     'client/templates/show-few-photos.html',
     'client/templates/show-few-photos.js'
     ], 'client');
+  
+  api.export('gPhotos', 'server');  
 });
 
 Package.onTest(function(api) {
   api.use('tinytest');
   api.use('mdisc:cloud-service-google-photo');
   api.addFiles('cloud-service-google-photo-tests.js');
+});
+
+Npm.depends({
+  "simple-gdata": "0.1.0",
+  "google-refresh-token": "0.5.3"
 });

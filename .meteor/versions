@@ -50,6 +50,7 @@ mdisc:cloud-services@0.0.1
 mdisc:jobs@0.0.1
 meteor@1.1.6
 meteor-platform@1.2.2
+meteorhacks:async@1.0.0
 meteorhacks:fast-render@2.9.0
 meteorhacks:inject-data@1.4.0
 meteorhacks:kadira@2.23.1
