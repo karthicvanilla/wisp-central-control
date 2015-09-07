@@ -8,7 +8,7 @@ Meteor.methods({
       MdCloudServices.credentials.insert({service: service, credentialToken: credentialToken, credentialSecret: credentialSecret, credential: credentialDetail});
     }
   },
-  getTopPhotos: function(service) {
+  getRecentPhotos: function(service) {
     var data = {};
     switch (service) {
       case 'Google Photos':
