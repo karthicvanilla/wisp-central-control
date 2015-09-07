@@ -3,7 +3,7 @@ Meteor.methods({
     var credentialDetail = OAuth.retrieveCredential(credentialToken, credentialSecret);
     var credential = MdCloudServices.credentials.findOne({owner: this.userId, service: service});
     if (credential) {
-      MdCloudServices.credentials.update({id: credential._id}, {service: service, credentialToken: credentialToken, credentialSecret: credentialSecret, credential: credentialDetail});
+      MdCloudServices.credentials.update({_id: credential._id}, {$set: {service: service, credentialToken: credentialToken, credentialSecret: credentialSecret, credential: credentialDetail}});
     } else {
       MdCloudServices.credentials.insert({service: service, credentialToken: credentialToken, credentialSecret: credentialSecret, credential: credentialDetail});
     }
@@ -16,6 +16,7 @@ Meteor.methods({
         if (credential) {
           var accessToken = credential.credential.serviceData.accessToken;
           if (accessToken) {
+            //gPhotos.refreshAccessToken(accessToken);
             gPhotos.setAccessToken(accessToken);
             gPhotos.getRecent(function(err, res) {
               var len = res.feed.entry.length;
