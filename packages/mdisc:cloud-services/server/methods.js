@@ -9,25 +9,31 @@ Meteor.methods({
     }
   },
   getRecentPhotos: function(service) {
-    var data = {};
+    var userId = this.userId;
     switch (service) {
       case 'Google Photos':
-        var credential = MdCloudServices.credentials.findOne({owner: this.userId, service: service});
+        var credential = MdCloudServices.credentials.findOne({owner: userId, service: service});
         if (credential) {
           var accessToken = credential.credential.serviceData.accessToken;
           if (accessToken) {
-            //gPhotos.refreshAccessToken(accessToken);
             gPhotos.setAccessToken(accessToken);
-            gPhotos.getRecent(function(err, res) {
+            gPhotos.getRecent(Meteor.bindEnvironment(function(err, res) {
               var len = res.feed.entry.length;
+              var urls = [];
               for (var x = 0; x < len; x++) {
                 console.log(res.feed.entry[x].content.src);
+                urls.push(res.feed.entry[x].content.src);
               }
-            });
+              var doc = MdCloudServices.recentPhotos.findOne({owner: userId});
+              if (doc) {
+                MdCloudServices.recentPhotos.update({_id: doc._id}, {$set: {urls: urls}});
+              } else {
+                MdCloudServices.recentPhotos.insert({urls: urls});                
+              }
+            }));
           }
         }
         break;
     }
-    return data;
   }
 });
