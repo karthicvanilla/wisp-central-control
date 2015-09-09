@@ -8,12 +8,20 @@ Meteor.methods({
       MdCloudServices.credentials.insert({service: service, credentialToken: credentialToken, credentialSecret: credentialSecret, credential: credentialDetail});
     }
   },
-  getRecentPhotos: function(service) {
+  updateRecentPhotos: function(service) {
     var userId = this.userId;
     switch (service) {
       case 'Google Photos':
         var credential = MdCloudServices.credentials.findOne({owner: userId, service: service});
         if (credential) {
+          //check if token has expired.
+          var now = new Date();
+          var expDate = new Date(credential.credential.serviceData.expiresAt);
+          var timeLeft = expDate - now;
+          if (timeLeft < 60000) {
+            // expired or less than a minute remaining
+            credential = MdCloudServices.renewCredential(credential);              
+          }
           var accessToken = credential.credential.serviceData.accessToken;
           if (accessToken) {
             gPhotos.setAccessToken(accessToken);

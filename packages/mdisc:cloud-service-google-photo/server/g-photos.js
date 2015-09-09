@@ -13,6 +13,7 @@ gPhotos = (function () {
   var refreshAccessToken = function (refreshToken) {
     var reponse = Async.runSync(function (done) {
       refresh(refreshToken, Meteor.settings.google.clientId, Meteor.settings.google.secret, function (error, json, response) {
+        console.log(json);
         done(error, json);
       });
     });

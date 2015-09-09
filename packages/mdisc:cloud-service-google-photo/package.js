@@ -17,8 +17,11 @@ Package.onUse(function(api) {
     'meteor',
     'oauth',
     'templating',
+    'iron:router',
     'google',
-    'meteorhacks:async'
+    'meteorhacks:async',
+    'wisptools:menu',
+    'mdisc:busy'
   ]);  
 
   // Server only files
@@ -30,9 +33,13 @@ Package.onUse(function(api) {
   api.addFiles([
     'client/templates/authorize.html',
     'client/templates/authorize.js',
-    'client/templates/show-few-photos.html',
-    'client/templates/show-few-photos.js'
+    'client/menu.js'
     ], 'client');
+
+  // Server and Client files
+  api.addFiles([
+    'lib/router.js'
+    ], ['server', 'client']);
   
   api.export('gPhotos', 'server');  
 });

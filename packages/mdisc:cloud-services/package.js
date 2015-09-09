@@ -14,6 +14,8 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
 
   api.use([
+    'meteor',
+    'templating',
     'oauth',
     'mdisc:cloud-service-google-photo',
     'mdisc:cloud-service-dropbox',
@@ -25,7 +27,14 @@ Package.onUse(function(api) {
     ], ['server','client']);
 
   api.addFiles([
-    'server/methods.js'
+    'client/templates/show-few-photos.html',
+    'client/templates/show-few-photos.js'
+    ], ['client']);
+
+
+  api.addFiles([
+    'server/methods.js',
+    'server/functions.js'
     ], ['server']);
 
   api.export('MdCloudServices');
