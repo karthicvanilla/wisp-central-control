@@ -20,7 +20,8 @@ Package.onUse(function(api) {
     'mdisc:cloud-service-google-photo',
     'mdisc:cloud-service-dropbox',
     'wisptools:collection',
-    'meteorhacks:async'
+    'meteorhacks:async',
+    'mdisc:archive'
   ]);  
 
   api.addFiles([

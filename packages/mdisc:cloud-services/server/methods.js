@@ -45,7 +45,9 @@ Meteor.methods({
     }
   },
   initAutoCloudArchive: function(service, archiveId) {
+    // Get all the files to be used in the archive
     var userId = this.userId;
+    console.log(archiveId);
     switch (service) {
       case 'Google Photos':
         var credential = MdCloudServices.credentials.findOne({owner: userId, service: service});
@@ -61,7 +63,10 @@ Meteor.methods({
               var len = res.feed.entry.length;
               for (var x=0; x < len; x++) {
                 var id = res.feed.entry[x].gphoto$id.$t;
-                var album = res.feed.entry[x].gphoto$name.$t;
+                var album = {
+                  name: res.feed.entry[x].gphoto$name.$t,
+                  files: []
+                }
                 // Process albumns one at a time to lower server overhead
                 Async.runSync(function (done) {
                   client.getAlbum(id, function (err, res) {
@@ -79,19 +84,19 @@ Meteor.methods({
                         }
                       }
                       // Add this photo/video to the list
-                      photos.push({
-                        album:  album,
+                      album.files.push({
                         name:   name,
                         url:    url,
                         type:   type,
-                        date:   date
                       });
                     }
+                    photos.push(album);
                     done();
                   });
                 });
               }
-              console.log(photos);
+              MdArchive.addFileData(archiveId, photos);
+              console.log('Archive Init Done: ' + archiveId);
             }));
           }
         }

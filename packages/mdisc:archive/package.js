@@ -37,6 +37,10 @@ Package.onUse(function(api) {
     'lib/router.js'
     ], ['server','client']);
 
+  api.addFiles([
+    'server/functions.js'
+    ], ['server']);
+
   api.export('MdArchive');
 
 });
