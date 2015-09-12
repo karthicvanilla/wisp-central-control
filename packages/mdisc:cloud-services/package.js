@@ -19,7 +19,8 @@ Package.onUse(function(api) {
     'oauth',
     'mdisc:cloud-service-google-photo',
     'mdisc:cloud-service-dropbox',
-    'wisptools:collection'
+    'wisptools:collection',
+    'meteorhacks:async'
   ]);  
 
   api.addFiles([

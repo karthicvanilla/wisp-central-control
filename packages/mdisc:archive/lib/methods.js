@@ -6,9 +6,6 @@ Meteor.methods({
       status: 'Open',
       initDone: false 
     });
-    if (Meteor.isServer) {
-      MdJobs.initAutoCloudArchive(id);
-    }
     return id;
   }  
 });
