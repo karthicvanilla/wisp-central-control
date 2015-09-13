@@ -28,6 +28,10 @@ Package.onUse(function(api) {
   api.addFiles([
     'client/templates/admin-view.html',
     'client/templates/admin-view.js',
+    'client/templates/place-order.html',
+    'client/templates/place-order.js',
+    'client/templates/this-order.html',
+    'client/templates/this-order.js',
     'client/menu.js'
     ], ['client']);
 
@@ -38,7 +42,8 @@ Package.onUse(function(api) {
     ], ['server','client']);
 
   api.addFiles([
-    'server/functions.js'
+    'server/functions.js',
+    'server/methods.js'
     ], ['server']);
 
   api.export('MdArchive');
