@@ -7,6 +7,7 @@ Meteor.methods({
       status: 'Open',
       size: 'Unknown',
       diskType: 'Unknown',
+      disks: 'Unknown',
       initDone: false 
     });
     return id;
